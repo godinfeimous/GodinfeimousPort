@@ -1,785 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Godinfeimous - Portafolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        .container {
-            text-align: center;
-            padding: 20px;
-            max-width: 600px;
-            animation: fadeIn 1s ease-in;
-            position: relative;
-            z-index: 1;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Animación de entrada */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Animación de pulso para la imagen de perfil */
-        @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 0 20px rgba(157, 78, 221, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 40px rgba(157, 78, 221, 0.8);
-            }
-        }
-
-        /* Animación de rotación leve */
-        @keyframes floatUp {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin: 0 auto 30px;
-            background: linear-gradient(135deg, #9d4edd 0%, #7d5bce 100%);
-            overflow: hidden;
-            border: 4px solid #9d4edd;
-            animation: pulse 2.5s ease-in-out infinite, floatUp 3s ease-in-out infinite;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 80px;
-        }
-
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: #9d4edd;
-            margin-bottom: 50px;
-            line-height: 1.2;
-            text-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
-            animation: fadeIn 1.2s ease-in 0.3s both;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-        }
-
-        h2 {
-            animation: slideInDown 0.6s ease-out;
-        }
-
-        .button-container {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 50px;
-            animation: fadeIn 1.4s ease-in 0.6s both;
-        }
-
-        .btn {
-            padding: 15px 40px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border: 2px solid #9d4edd;
-            background: transparent;
-            color: #9d4edd;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            animation: scaleRotate 0.6s ease-out;
-        }
-
-        .btn:hover {
-            color: #ffffff;
-            box-shadow: 0 0 30px rgba(157, 78, 221, 0.6);
-            transform: translateY(-3px) scale(1.05);
-            animation: glowPulse 1.5s ease-in-out infinite;
-        }
-
-        .btn:active {
-            transform: translateY(-1px) scale(0.98);
-            animation: none;
-        }
-
-        /* Animación de aparición escalonada para los botones */
-        .btn:nth-child(1) {
-            animation: slideUp 0.6s ease-out 0.7s both;
-        }
-
-        .btn:nth-child(2) {
-            animation: slideUp 0.6s ease-out 0.8s both;
-        }
-
-        .btn:nth-child(3) {
-            animation: slideUp 0.6s ease-out 0.9s both;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Efectos visuales adicionales */
-        .decorative-accent {
-            position: fixed;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(157, 78, 221, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: float 15s ease-in-out infinite;
-            box-shadow: 0 0 80px rgba(157, 78, 221, 0.3);
-        }
-
-        .decorative-accent:nth-child(1) {
-            top: -100px;
-            left: -100px;
-            animation-duration: 20s;
-        }
-
-        .decorative-accent:nth-child(2) {
-            bottom: -100px;
-            right: -100px;
-            animation-duration: 25s;
-            animation-delay: 5s;
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% {
-                opacity: 0.3;
-                filter: blur(0px);
-            }
-            50% {
-                opacity: 0.7;
-                filter: blur(10px);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0);
-            }
-            25% {
-                transform: translate(30px, -30px);
-            }
-            50% {
-                transform: translate(0, -50px);
-            }
-            75% {
-                transform: translate(-30px, -30px);
-            }
-        }
-
-        /* Estrellas de fondo */
-        .stars-container {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #9d4edd;
-            border-radius: 50%;
-            box-shadow: 0 0 3px #c584d9;
-            animation: twinkle 3s infinite;
-        }
-
-        /* Animaciones de parpadeo */
-        @keyframes twinkle {
-            0%, 100% {
-                opacity: 0.3;
-            }
-            50% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes twinkleSlow {
-            0%, 100% {
-                opacity: 0.2;
-            }
-            50% {
-                opacity: 0.8;
-            }
-        }
-
-        @keyframes floatingStar {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        .star:nth-child(1) { animation: twinkle 3s infinite; top: 10%; left: 5%; }
-        .star:nth-child(2) { animation: twinkleSlow 4s infinite; top: 15%; left: 92%; animation-delay: 0.5s; }
-        .star:nth-child(3) { animation: twinkle 3.5s infinite; top: 20%; left: 50%; animation-delay: 1s; }
-        .star:nth-child(4) { animation: twinkleSlow 4.5s infinite; top: 30%; left: 15%; animation-delay: 0.3s; }
-        .star:nth-child(5) { animation: twinkle 3.2s infinite; top: 35%; left: 85%; animation-delay: 1.5s; }
-        .star:nth-child(6) { animation: twinkleSlow 4.2s infinite; top: 45%; left: 10%; animation-delay: 0.8s; }
-        .star:nth-child(7) { animation: twinkle 3.8s infinite; top: 50%; left: 88%; animation-delay: 1.2s; }
-        .star:nth-child(8) { animation: twinkleSlow 4.1s infinite; top: 60%; left: 25%; animation-delay: 0.2s; }
-        .star:nth-child(9) { animation: twinkle 3.3s infinite; top: 65%; left: 75%; animation-delay: 1.8s; }
-        .star:nth-child(10) { animation: twinkleSlow 4.3s infinite; top: 75%; left: 45%; animation-delay: 0.7s; }
-        .star:nth-child(11) { animation: twinkle 3.6s infinite; top: 80%; left: 12%; animation-delay: 1.1s; }
-        .star:nth-child(12) { animation: twinkleSlow 4.4s infinite; top: 85%; left: 90%; animation-delay: 0.4s; }
-        .star:nth-child(13) { animation: twinkle 3.4s infinite; top: 25%; left: 65%; animation-delay: 1.3s; }
-        .star:nth-child(14) { animation: twinkleSlow 4.2s infinite; top: 40%; left: 35%; animation-delay: 0.9s; }
-        .star:nth-child(15) { animation: twinkle 3.7s infinite; top: 55%; left: 70%; animation-delay: 1.6s; }
-        .star:nth-child(16) { animation: twinkleSlow 4s infinite; top: 70%; left: 30%; animation-delay: 0.6s; }
-        .star:nth-child(17) { animation: twinkle 3.5s infinite; top: 18%; left: 78%; animation-delay: 1.4s; }
-        .star:nth-child(18) { animation: twinkleSlow 4.5s infinite; top: 38%; left: 58%; animation-delay: 0.1s; }
-        .star:nth-child(19) { animation: twinkle 3.9s infinite; top: 62%; left: 8%; animation-delay: 1.7s; }
-        .star:nth-child(20) { animation: twinkleSlow 4.1s infinite; top: 88%; left: 68%; animation-delay: 0.5s; }
-
-        /* ===== ADVANCED ANIMATIONS ===== */
-        @keyframes glowPulse {
-            0%, 100% {
-                box-shadow: 0 0 20px rgba(157, 78, 221, 0.4), inset 0 0 20px rgba(157, 78, 221, 0.1);
-            }
-            50% {
-                box-shadow: 0 0 40px rgba(157, 78, 221, 0.8), inset 0 0 30px rgba(157, 78, 221, 0.2);
-            }
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: -1000px 0;
-            }
-            100% {
-                background-position: 1000px 0;
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes scaleRotate {
-            0% {
-                opacity: 0;
-                transform: scale(0.5) rotate(-180deg);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) rotate(0deg);
-            }
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        @keyframes spinSlow {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes fadeInScale {
-            0% {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes wobble {
-            0%, 100% {
-                transform: translateX(0);
-            }
-            25% {
-                transform: translateX(-10px);
-            }
-            75% {
-                transform: translateX(10px);
-            }
-        }
-
-        @keyframes heartbeat {
-            0%, 100% {
-                transform: scale(1);
-            }
-            25% {
-                transform: scale(1.1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        @keyframes breathing {
-            0%, 100% {
-                opacity: 0.7;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.05);
-            }
-        }
-
-        /* ===== NAVIGATION ===== */
-        .nav-buttons {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            padding: 20px;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            border-bottom: 2px solid rgba(157, 78, 221, 0.3);
-            flex-wrap: wrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
-        }
-
-        .nav-buttons.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .nav-btn {
-            padding: 10px 20px;
-            border: 2px solid #9d4edd;
-            background: transparent;
-            color: #9d4edd;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            animation: slideInDown 0.4s ease-out;
-        }
-
-        .nav-btn:nth-child(1) { animation-delay: 0.1s; }
-        .nav-btn:nth-child(2) { animation-delay: 0.2s; }
-        .nav-btn:nth-child(3) { animation-delay: 0.3s; }
-        .nav-btn:nth-child(4) { animation-delay: 0.4s; }
-
-        .nav-btn:hover {
-            background: #9d4edd;
-            color: #ffffff;
-            box-shadow: 0 0 30px rgba(157, 78, 221, 0.8);
-            transform: scale(1.08) translateY(-2px);
-        }
-
-        .nav-btn.active {
-            background: #9d4edd;
-            color: #ffffff;
-            box-shadow: 0 0 30px rgba(157, 78, 221, 0.8);
-        }
-
-        /* ===== SECTIONS ===== */
-        section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 20px;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: sectionFadeIn 0.8s ease-out forwards;
-        }
-
-        /* Hero y About con full height */
-        section#hero,
-        section#about {
-            min-height: 100vh;
-        }
-
-        /* Work, Games y Contact más compactas */
-        section#work,
-        section#games,
-        section#contact {
-            min-height: auto;
-            padding: 40px 20px;
-        }
-
-        @keyframes sectionFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        section:nth-of-type(2) { animation-delay: 0.1s; }
-        section:nth-of-type(3) { animation-delay: 0.2s; }
-        section:nth-of-type(4) { animation-delay: 0.3s; }
-
-        .section-container {
-            max-width: 800px;
-            width: 100%;
-        }
-
-        /* ===== EMBEDS ===== */
-        .embed {
-            background: linear-gradient(135deg, rgba(157, 78, 221, 0.1) 0%, rgba(125, 91, 206, 0.05) 100%);
-            border-left: 4px solid #9d4edd;
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            border: 2px solid rgba(157, 78, 221, 0.3);
-            backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
-            animation: slideInLeft 0.6s ease-out;
-        }
-
-        .embed:hover {
-            transform: translateX(10px);
-            box-shadow: 0 0 40px rgba(157, 78, 221, 0.4), inset 0 0 20px rgba(157, 78, 221, 0.1);
-            border-color: #9d4edd;
-        }
-
-        @keyframes embedFadeIn {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .embed:hover {
-            transform: translateX(5px);
-            box-shadow: 0 0 30px rgba(157, 78, 221, 0.3);
-        }
-
-        .embed-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #9d4edd;
-            margin-bottom: 15px;
-            text-align: left;
-            animation: slideInLeft 0.6s ease-out 0.2s backwards;
-        }
-
-        .embed-content {
-            font-size: 1rem;
-            line-height: 1.8;
-            text-align: center;
-            color: #e0e0e0;
-            animation: fadeInScale 0.6s ease-out 0.3s backwards;
-        }
-
-        .embed-content p {
-            margin: 8px 0;
-            animation: slideInRight 0.5s ease-out backwards;
-        }
-
-        .embed-content p:nth-child(1) { animation-delay: 0.4s; }
-        .embed-content p:nth-child(2) { animation-delay: 0.5s; }
-        .embed-content p:nth-child(3) { animation-delay: 0.6s; }
-        .embed-content p:nth-child(n+4) { animation-delay: 0.7s; }
-
-        /* ===== MY WORK SECTION ===== */
-        .videos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .video-card {
-            background: linear-gradient(135deg, rgba(157, 78, 221, 0.15) 0%, rgba(125, 91, 206, 0.05) 100%);
-            border: 2px solid rgba(157, 78, 221, 0.3);
-            border-radius: 15px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            animation: fadeInScale 0.6s ease-out;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            position: relative;
-        }
-
-        .video-card:nth-child(1) { animation-delay: 0.1s; }
-        .video-card:nth-child(2) { animation-delay: 0.2s; }
-        .video-card:nth-child(3) { animation-delay: 0.3s; }
-        .video-card:nth-child(4) { animation-delay: 0.4s; }
-        .video-card:nth-child(5) { animation-delay: 0.5s; }
-        .video-card:nth-child(6) { animation-delay: 0.6s; }
-        .video-card:nth-child(n+7) { animation-delay: 0.7s; }
-
-        .video-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(157, 78, 221, 0.6);
-            border-color: #9d4edd;
-        }
-
-        .video-container {
-            width: 100%;
-            padding-bottom: 56.25%;
-            position: relative;
-            background: rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            border-radius: 10px;
-            animation: slideInUp 0.6s ease-out;
-            box-shadow: 0 0 20px rgba(157, 78, 221, 0.2);
-        }
-
-        .video-card:hover .video-container {
-            box-shadow: 0 0 40px rgba(157, 78, 221, 0.6);
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 10px;
-        }
-
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .video-info {
-            padding: 15px;
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            min-height: 60px;
-        }
-
-        .video-info p {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #9d4edd;
-        }
-
-        /* ===== GAMES SECTION ===== */
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .game-btn {
-            padding: 30px 20px;
-            background: linear-gradient(135deg, rgba(157, 78, 221, 0.2) 0%, rgba(125, 91, 206, 0.1) 100%);
-            border: 2px solid #9d4edd;
-            border-radius: 15px;
-            color: #9d4edd;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            animation: slideInUp 0.6s ease-out;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .game-btn:nth-child(1) { animation-delay: 0.1s; }
-        .game-btn:nth-child(2) { animation-delay: 0.2s; }
-        .game-btn:nth-child(3) { animation-delay: 0.3s; }
-
-        .game-btn:hover {
-            transform: translateY(-10px) scale(1.08);
-            box-shadow: 0 0 50px rgba(157, 78, 221, 0.8);
-            background: linear-gradient(135deg, rgba(157, 78, 221, 0.4) 0%, rgba(125, 91, 206, 0.3) 100%);
-        }
-
-        .game-btn:active {
-            transform: translateY(-5px) scale(1.05);
-        }
-
-        /* ===== CONTACT BUTTONS ===== */
-        .contact-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .contact-btn {
-            padding: 15px 35px;
-            background: linear-gradient(135deg, rgba(157, 78, 221, 0.25) 0%, rgba(125, 91, 206, 0.15) 100%);
-            border: 2px solid #9d4edd;
-            border-radius: 12px;
-            color: #9d4edd;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            animation: slideInUp 0.6s ease-out;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-btn:nth-child(1) { animation-delay: 0.1s; }
-        .contact-btn:nth-child(2) { animation-delay: 0.2s; }
-
-        .contact-btn:hover {
-            background: linear-gradient(135deg, rgba(157, 78, 221, 0.45) 0%, rgba(125, 91, 206, 0.35) 100%);
-            box-shadow: 0 0 50px rgba(157, 78, 221, 0.8);
-            transform: translateY(-8px) scale(1.08);
-        }
-
-        .contact-btn:active {
-            transform: translateY(-3px);
-        }
-
-        /* ===== SCROLL ANIMATION ===== */
-        .fade-in-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-            animation: slideInUp 0.6s ease-out;
-        }
-
-        /* ===== HERO SECTION ===== */
-        #hero {
-            min-height: 100vh;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Contenedor de estrellas -->
     <div class="stars-container">
@@ -812,9 +40,9 @@
     <div class="nav-buttons">
         <button class="nav-btn active" onclick="scrollToSection('hero')">Home</button>
         <button class="nav-btn" onclick="scrollToSection('about')">About Me</button>
-        <button class="nav-btn" onclick="scrollToSection('work')">My Work</button>
-        <button class="nav-btn" onclick="scrollToSection('games')">Games</button>
-        <button class="nav-btn" onclick="scrollToSection('contact')">Contact</button>
+        <button class="nav-btn" onclick="scrollToSection('Work')">My Work Videos</button>
+        <button class="nav-btn" onclick="scrollToSection('games')">My Games</button>
+        <button class="nav-btn" onclick="scrollToSection('contact')">Hire me</button>
     </div>
 
     <!-- Hero Section -->
@@ -826,14 +54,14 @@
             </div>
 
             <!-- Texto principal -->
-            <h1>Hi my name is<br>godinfeimous</h1>
+        <h1>Hi, I'm Godinfeimous<br>Backend Scripter +5 years</h1>
 
             <!-- Botones -->
             <div class="button-container">
                 <button class="btn" onclick="scrollToSection('about')">About me</button>
-                <button class="btn" onclick="scrollToSection('work')">My work</button>
-                <button class="btn" onclick="scrollToSection('games')">Games</button>
-                <button class="btn" onclick="scrollToSection('contact')">Contact me</button>
+                <button class="btn" onclick="scrollToSection('work')">My work videos</button>
+                <button class="btn" onclick="scrollToSection('games')">My Games</button>
+                <button class="btn" onclick="scrollToSection('contact')">Hire me</button>
             </div>
         </div>
     </section>
@@ -843,267 +71,96 @@
         <div class="section-container">
             <h2 style="font-size: 3rem; color: #9d4edd; margin-bottom: 40px; text-shadow: 0 0 20px rgba(157, 78, 221, 0.3);">About Me</h2>
             
-            <!-- Main Embed -->
-            <div class="embed fade-in-on-scroll">
-                <div class="embed-title">💻 Roblox Studio Backend Scripter</div>
-                <div class="embed-content">
-                    <p>✨ +5 Years of Experience</p>
-                    <p>✨ Available for commissions and full system development</p>
-                </div>
-            </div>
+        <!-- Main Embed -->
+        <div class="embed fade-in-on-scroll">
+            <div class="embed-title">💻 Roblox Backend Systems Engineer</div>
+            <div class="embed-content">
+                <p>🚀 5+ Years of Professional Experience in Roblox Development</p>
+                <p>⚡ Specialized in scalable backend systems, clean architecture, and performance optimization</p>
+                <p>🔗 Strong expertise in client-server communication (Knit, Warp, signals)</p>
+                <p>🧠 Focused on maintainable, modular, and production-ready code</p>
 
+                <p>🌟 Worked with large Spanish YouTubers such as <a href="https://www.youtube.com/@fan12_yt" target="_blank">Fan12YT</a> on a Squid Game event involving 100+ content creators</p>
+                <p>📺 Most participants were verified creators</p>
+                <p>🎮 View project: <a href="https://www.roblox.com/communities/35355219/Squid-Blox-Games#!/about" target="_blank">Squid Blox Games</a></p>
+
+                <p>🎮 Additional projects:</p>
+                <p>🛒 <a href="https://www.roblox.com/games/135152121880898/DROP-SHOP" target="_blank">Drop Shop</a> (Shop System)</p>
+                <p>☕ <a href="https://www.roblox.com/games/134942994902884/CAFE-RANDOM" target="_blank">Cafe Random</a> (Hangout Game)</p>
+
+                <p>🛠️ Role: Backend Scripter in all listed projects</p>
+                <p>📌 Experience also includes multiple private and task-based projects (not publicly available)</p>
+
+                <p>🤝 Open for commissions, long-term projects, and full system development</p>
+            </div>
+        </div>
             <!-- What I Can Do Embed -->
             <div class="embed fade-in-on-scroll">
                 <div class="embed-title">⭐ What I Can Do</div>
                 <div class="embed-content">
-                    <p>⚙️ Systems using Knit, Warp, ProfileStore, SimplePath, Cmdr</p>
-                    <p>💾 Data systems (progress, currencies, inventories)</p>
-                    <p>🎭 TweenService visual effects</p>
-                    <p>📦 Store and inventory systems (daily rewards, gamepasses, coins)</p>
-                    <p>🚪 Teleport hubs and portals</p>
-                    <p>📜 Daily quests and progression systems</p>
-                    <p>❤️ Health bars, damage and healing mechanics</p>
-                    <p>🔫 Weapon systems (guns class, shooting logic, reload, recoil, advanced damage, etc.)</p>
-                    <p>⚔️ Melee combat systems (hitboxes, raycast, effects, animations)</p>
-                    <p>🖱️ Button and ProximityPrompt actions</p>
-                    <p>🐞 Professional bug fixing</p>
-                    <p>🛠️ Custom systems tailored to your project</p>
+                <p>⚙️ Advanced systems built with Knit, Warp, ProfileStore, SimplePath, Cmdr, and Trove</p>
+                <p>🧩 Scalable modular code architecture for clean and maintainable projects</p>
+                <p>🔗 Efficient client-server communication (optimized networking, remotes, and signals)</p>
+                <p>💾 Robust data systems (player progress, currencies, inventories, saving/loading)</p>
+                <p>🎭 Smooth visual effects using TweenService and client-side polish</p>
+                <p>📦 Complete shop and inventory systems (daily rewards, gamepasses, currencies)</p>
+                <p>🚪 Teleportation systems (hubs, portals, seamless transitions)</p>
+                <p>📜 Quest systems (daily missions, progression, objectives tracking)</p>
+                <p>❤️ Combat core systems (health, damage, healing, status handling)</p>
+                <p>🔫 Advanced weapon systems (guns, shooting mechanics, reload, recoil, damage systems)</p>
+                <p>⚔️ Melee combat systems (hitboxes, raycasting, effects, animations)</p>
+                <p>🖱️ Interactive systems (UI buttons, ProximityPrompts, player interactions)</p>
+                <p>🤖 Intelligent NPCs (AI behavior, pathfinding, dynamic interactions)</p>
+                <p>🐞 Clean and professional bug fixing & optimization</p>
+                <p>🛠️ Fully custom systems tailored to your game's needs</p>
                 </div>
             </div>
+            <!-- Why Hire Me Embed -->
+                    <div class="embed fade-in-on-scroll">
+                        <div class="embed-title">❓ Why Hire Me?</div>
+                        <div class="embed-content">
+                            <p>⚡ Fast and efficient delivery on all systems</p>
+                            <p>🧠 Experienced with frameworks and clean architecture (no memory leaks)</p>
+                            <p>🤝 Strong team coordination and communication</p>
+                            <p>🔍 Highly detail-oriented, always aiming for the best quality</p>
+                            <p>🛠️ Fully customizable and scalable code</p>
+                            <p>📚 Able to adapt quickly to any library or existing system</p>
+                            <p>🟢 Available most of the day for work and updates</p>
+                        </div>
+                    </div>
+<!-- Pricing Embed -->
+<div class="embed fade-in-on-scroll">
+    <div class="embed-title">💵 Pricing & Delivery</div>
+    <div class="embed-content">
+        <p>💰 Pricing:</p>
 
-            <!-- FAQ Embed -->
-            <div class="embed fade-in-on-scroll">
-                <div class="embed-title">❓ FAQ</div>
-                <div class="embed-content">
-                    <p><strong>🧩 What do you work on?</strong></p>
-                    <p>🎮 Game systems, custom mechanics, optimization, and backend scripts for Roblox.</p>
-                    <p style="margin-top: 15px;"><strong>🧠 Do you use professional frameworks?</strong></p>
-                    <p>⚙️ Yes. I use structured and scalable frameworks when required.</p>
-                    <p style="margin-top: 15px;"><strong>🔧 Do you offer revisions?</strong></p>
-                    <p>✔️ Fixes caused by my work are free.</p>
-                    <p>➕ Changes caused by external factors have an additional cost.</p>
-                    <p style="margin-top: 15px;"><strong>⏱️ Do you work with deadlines?</strong></p>
-                    <p>⚡ Yes. Urgent or tight deadlines have an extra fee.</p>
-                    <p style="margin-top: 15px;"><strong>💰 Is pricing fixed?</strong></p>
-                    <p>📊 No. Pricing depends on scope and complexity.</p>
-                </div>
-            </div>
+        <p>📊 Custom pricing based on system complexity and project scope</p>
 
-            <!-- Pricing Embed -->
-            <div class="embed fade-in-on-scroll">
-                <div class="embed-title">💵 Payments & Delivery</div>
-                <div class="embed-content">
-                    <p><strong>Payments:</strong></p>
-                    <p>✔️ Robux (600+ tax minimum)</p>
-                    <p>✔️ PayPal USD ($5 minimum)</p>
-                    <p>✔️ 50% upfront required</p>
-                    <p>✔️ Extra fees for urgent or out-of-scope work</p>
-                    <p style="margin-top: 15px;"><strong>Delivery Time:</strong></p>
-                    <p>📌 Usually 1–3 days, depending on the request</p>
-                    <p>📌 If I already have pending commissions, I will provide an estimated delivery date</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <p>🎮 Gamepass payments: starting from 600+ Robux (tax not included)</p>
+        <p>💎 Roblox Plus: starting from 450 Robux (no tax)</p>
 
+        <p>💲 PayPal available (starting at $5 USD)</p>
+
+        <p>⚡ Payment Terms:</p>
+
+        <p>✔️ 50% upfront to begin development</p>
+        <p>✔️ Remaining 50% upon final delivery</p>
+        <p>➕ Additional fees may apply for rush orders or extra features</p>
+
+        <p>🚀 Delivery:</p>
+
+        <p>📌 Estimated delivery: 1-3 days depending on scope</p>
+        <p>📌 Clear deadline confirmed before starting</p>
+        <p>📌 Consistent progress updates throughout development</p>
+    </div>
+</div>
     <!-- My Work Section -->
     <section id="work">
         <div class="section-container">
-            <h2 style="font-size: 3rem; color: #9d4edd; margin-bottom: 40px; text-shadow: 0 0 20px rgba(157, 78, 221, 0.3);">My Work</h2>
-            
-            <div class="videos-grid fade-in-on-scroll">
-                <!-- Video 1 -->
-                <div class="video-card">
-                    <div class="video-container">
-                        <video width="100%" height="auto" controls>
-                            <source src="Videos/FnafComms.mp4" type="video/mp4">
-                            Tu navegador no soporta videos HTML5.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <p>Project 1(NEW!!)</p>
-                    </div>
-                </div>
+            <h2 style="font-size:3rem;color:#9d4edd;">My Work</h2>
 
-                <!-- Video 2 -->
-                <div class="video-card">
-                    <div class="video-container">
-                        <video width="100%" height="auto" controls>
-                            <source src="Videos/2026-03-25 02-27-10.mp4" type="video/mp4">
-                            Tu navegador no soporta videos HTML5.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <p>Project 2(NEW!!)</p>
-                    </div>
-                </div>
-
-                <!-- Video 3 -->
-                <div class="video-card">
-                    <div class="video-container">
-                        <video width="100%" height="auto" controls>
-                            <source src="Videos/2024-09-23 03-07-51 (online-video-cutter.com).mp4" type="video/mp4">
-                            Tu navegador no soporta videos HTML5.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <p>Project 3(old video)</p>
-                    </div>
-                </div>
-
-                <!-- Video 4 -->
-                <div class="video-card">
-                    <div class="video-container">
-                        <video width="100%" height="auto" controls>
-                            <source src="Videos/2024-09-23 03-08-19 (online-video-cutter.com).mp4" type="video/mp4">
-                            Tu navegador no soporta videos HTML5.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <p>Project 4(old video)</p>
-                    </div>
-                </div>
-
-                <!-- Video 5 -->
-                <div class="video-card">
-                    <div class="video-container">
-                        <video width="100%" height="auto" controls>
-                            <source src="Videos/2024-09-23 03-08-48 (online-video-cutter.com).mp4" type="video/mp4">
-                            Tu navegador no soporta videos HTML5.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <p>Project 5(old video)</p>
-                    </div>
-                </div>
-
-                <!-- Video 6 -->
-                <div class="video-card">
-                    <div class="video-container">
-                        <video width="100%" height="auto" controls>
-                            <source src="Videos/2025-01-06 02-22-59.mp4" type="video/mp4">
-                            Tu navegador no soporta videos HTML5.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <p>Project 6(old video)</p>
-                    </div>
-                </div>
-                                <!-- Video 7 -->
-                <div class="video-card">
-                    <div class="video-container">
-                        <video width="100%" height="auto" controls>
-                            <source src="Videos/2025-09-06_16-04-41.mp4" type="video/mp4">
-                            Tu navegador no soporta videos HTML5.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <p>Project 7</p>
-                    </div>
-                </div>
-
-                <!-- Video 11 -->
-                <div class="video-card">
-                    <div class="video-container">
-                        <video width="100%" height="auto" controls>
-                            <source src="Videos/2025-01-07 04-24-43.mp4" type="video/mp4">
-                            Tu navegador no soporta videos HTML5.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <p>Project 8(old video)</p>
-                    </div>
-                </div>
-
-                <!-- Video 12 -->
-                <div class="video-card">
-                    <div class="video-container">
-                        <video width="100%" height="auto" controls>
-                            <source src="Videos/2025-01-14 02-57-11.mp4" type="video/mp4">
-                            Tu navegador no soporta videos HTML5.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <p>Project 9(old video)</p>
-                    </div>
-                </div>
-
-                <!-- Video 13 -->
-                <div class="video-card">
-                    <div class="video-container">
-                        <video width="100%" height="auto" controls>
-                            <source src="Videos/2025-10-03 16-17-44.mp4" type="video/mp4">
-                            Tu navegador no soporta videos HTML5.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <p>Project 10</p>
-                    </div>
-                </div>
-
-                <!-- Video 14 -->
-                <div class="video-card">
-                    <div class="video-container">
-                        <video width="100%" height="auto" controls>
-                            <source src="Videos/Linterna.mp4" type="video/mp4">
-                            Tu navegador no soporta videos HTML5.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <p>Project 11</p>
-                    </div>
-                </div>
-
-                <!-- Video 15 -->
-                <div class="video-card">
-                    <div class="video-container">
-                        <video width="100%" height="auto" controls>
-                            <source src="Videos/VIDEO TEST 2 (online-video-cutter.com).mp4" type="video/mp4">
-                            Tu navegador no soporta videos HTML5.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <p>Project 12</p>
-                    </div>
-                </div>
-
-                <!-- Video 16 -->
-                <div class="video-card">
-                    <div class="video-container">
-                        <video width="100%" height="auto" controls>
-                            <source src="Videos/Vídeo sin título ‐ Hecho con Clipchamp (1).mp4" type="video/mp4">
-                            Tu navegador no soporta videos HTML5.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <p>Project 13(old video)</p>
-                    </div>
-                </div>
-
-                <!-- Video 17 -->
-                <div class="video-card">
-                    <div class="video-container">
-                        <video width="100%" height="auto" controls>
-                            <source src="Videos/Vídeo sin título ‐ Hecho con Clipchamp.mp4" type="video/mp4">
-                            Tu navegador no soporta videos HTML5.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <p>Project 14(old video)</p>
-                    </div>
-                </div>
-                                <div class="video-card">
-                    <div class="video-container">
-                        <video width="100%" height="auto" controls>
-                            <source src="Videos/Kreicocomms.mp4" type="video/mp4">
-                            Tu navegador no soporta videos HTML5.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <p>Project 15</p>
-                    </div>
-                </div>
-            </div>
+            <!-- contenedor dinámico -->
+            <div class="videos-grid fade-in-on-scroll" id="videosContainer"></div>
         </div>
     </section>
 
@@ -1317,5 +374,6 @@
             titleObserver.observe(h2);
         });
     </script>
+     <script src="loadVideos.js"></script>
 </body>
 </html>
